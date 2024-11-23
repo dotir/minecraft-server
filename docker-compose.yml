@@ -1,0 +1,30 @@
+services:
+  mc-reborn:
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+      - "24454:24454/udp"
+    environment:
+      TZ: ${TZ}
+      EULA: ${EULA}
+      TYPE: ${TYPE}
+      FORGE_VERSION: ${FORGE_VERSION}
+      VERSION: ${VERSION}
+      MEMORY: ${MEMORY}
+      INIT_MEMORY: ${INIT_MEMORY}
+      MAX_MEMORY: ${MAX_MEMORY}
+      VIEW_DISTANCE: ${VIEW_DISTANCE}
+      ENTITY_BROADCAST_RANGE_PERCENTAGE: ${ENTITY_BROADCAST_RANGE_PERCENTAGE}
+      DIFFICULTY: ${DIFFICULTY}
+      SEED: ${SEED}
+      ONLINE_MODE: ${ONLINE_MODE}
+      ALLOW_FLIGHT: ${ALLOW_FLIGHT}
+      SERVER_NAME: ${SERVER_NAME}
+      # WORLD: ${WORLD}
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      - ./data:/data
+      - ./mods:/mods
+      - ./worlds:/worlds:ro
